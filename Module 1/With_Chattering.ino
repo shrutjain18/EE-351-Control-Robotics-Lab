@@ -10,7 +10,7 @@ long duration;
 int distance;
 bool lidOpen = false;
 unsigned long lastOpenTime = 0;
-const unsigned long openDuration = 3000; // Time to keep lid open (3 seconds)
+const unsigned long openDuration = 1000; // Time to keep lid open 
 
 void setup() {
   pinMode(trigPin, OUTPUT);
