@@ -30,7 +30,7 @@ void loop() {
     Serial.println("Lid Opened");
   }
 
-  // Close lid after 3 seconds
+  
   if (lidOpen && millis() - lastOpenTime > openDuration) {
     lidServo.write(0); // Close lid
     lidOpen = false;
