@@ -9,8 +9,7 @@ Servo lidServo;
 long duration;
 int distance;
 bool lidOpen = false;
-unsigned long lastOpenTime = 0;
-const unsigned long openDuration = 1000; // Time to keep lid open 
+unsigned long lastOpenTime = 0; 
 
 void setup() {
   pinMode(trigPin, OUTPUT);
