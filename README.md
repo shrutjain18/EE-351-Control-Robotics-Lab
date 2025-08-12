@@ -1,4 +1,4 @@
-# 351-Control-Robotics-Lab
+# EE-351-Control-Robotics-Lab
 This repo contains the documentation and files regarding the projects I made with my team in control and Robotics Lab.
 
 Course Instructor: Dr. Chayan Bawal
