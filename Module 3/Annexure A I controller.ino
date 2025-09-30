@@ -87,8 +87,8 @@ void loop() {
   float Ki = .5; 
   int error = (desiredRPM - RPM);
   dt = currentTime - lastEncoderTime;
-  integral = error * dt;
-  int pwmVal = previousPWM + Ki * error;
+  integral += error * dt;
+  int pwmVal = previousPWM + Ki * integral;
   pwmVal = constrain(pwmVal, 0, 255);
   //Serial.println(pwmVal);
   delay(100);
