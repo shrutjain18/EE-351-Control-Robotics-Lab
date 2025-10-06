@@ -25,7 +25,9 @@ int pwmVal = 0;
 float dt = 0;
 float derivative = 0;
 float integral=0;
- 
+float currentTime=0;
+
+
 
 
 void setup() {
@@ -84,23 +86,25 @@ void loop() {
       //delay(1000);
   
   // Calculate RPM from encoder feedback
-  unsigned long currentTime = millis();
-  float Kd = 0.1; 
-  float Ki=0;
-  float Kp=0.3;
+ 
+  float Kp = 2.5; 
+  float Kd = 00.005; 
+  float Ki=0.05;
   int error = (desiredRPM - RPM);
   dt = currentTime - lastEncoderTime;
   derivative = error / dt;
   integral += error*dt;
-  int pwmVal = Kp*error + (Kd*derivative) + (Ki*integral) + Kp*error;
+  
+  
+  int pwmVal =Kp*error + (Kd*derivative) + (Ki*integral) ;
   pwmVal = constrain(pwmVal, 0, 255);
   //Serial.println(pwmVal);
-  delay(100);
+  //delay(30);
   analogWrite(motorPin1, pwmVal);
   analogWrite(motorPin2,0);
   previousPWM = pwmVal;
   
-  
+  unsigned long currentTime = millis();
   if (currentTime - lastEncoderTime >= 1000) {
     RPM = encoderTicks * 60 / 312;  // Convert encoder ticks to RPM (assuming 360 ticks per revolution)
     encoderTicks = 0;  // Reset the tick count
