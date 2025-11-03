@@ -35,7 +35,9 @@ void loop() {
   // Calculating the distance
   distance = duration * 0.034 / 2;
   // Prints the distance on the Serial Monitor
+  Serial.println(distance);
   error = distance - ref;
   ang = 90 + Kp*error;
   servo.write(ang);
+  delay(100);
 }
