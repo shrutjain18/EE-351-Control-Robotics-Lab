@@ -31,13 +31,21 @@ void loop() {
   delayMicroseconds(10);
   digitalWrite(trigPin, LOW);
   // Reads the echoPin, returns the sound wave travel time in microseconds
-  duration = pulseIn(echoPin, HIGH);
+  duration = pulseIn(echoPin, HIGH, 10000);
   // Calculating the distance
   distance = duration * 0.034 / 2;
+  if (distance > 90 || distance <= 0) {       // Ignore invalid/outlier readings
+    Serial.println("Outlier ignored");
+    return;                                   // Skip the rest of this loop
+  }
+
   // Prints the distance on the Serial Monitor
+  Serial.print(ang);
+  Serial.print("");
   Serial.println(distance);
   error = distance - ref;
-  ang = 90 + Kp*error;
+  ang = 90 - 0.8 * error;
+  ang = constrain(ang, 0, 180);
   servo.write(ang);
-  delay(100);
+  delay(60);
 }
